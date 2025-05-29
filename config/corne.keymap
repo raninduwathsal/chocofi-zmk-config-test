@@ -404,16 +404,6 @@
             keep-mods = <(MOD_RGUI|MOD_LGUI)>;
         };
 
-        cmd_w_euro: cmd_w_euro {
-            compatible = "zmk,behavior-mod-morph";
-            label = "CMD_W_EURO";
-            bindings = <&w_euro>, <&kp W>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LGUI|MOD_RGUI|MOD_LCTL|MOD_LSFT|MOD_RCTL|MOD_RSFT)>;
-            keep-mods = <(MOD_LCTL|MOD_LSFT|MOD_LALT|MOD_LGUI|MOD_RALT|MOD_RGUI|MOD_RSFT|MOD_RCTL)>;
-        };
-
         shift_tap: shift_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_TAP";
@@ -456,81 +446,11 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SWITCH_LAYOUT";
             #binding-cells = <0>;
-            bindings = <&to 1>, <&to 0>;
+            bindings = <&to 0>, <&to 0>;
         };
     };
 
     macros {
-        uacute: uacute {
-            compatible = "zmk,behavior-macro";
-            label = "UACUTE";
-            #binding-cells = <0>;
-            bindings = <&always_acute &kp U>;
-        };
-
-        acirc: acirc {
-            compatible = "zmk,behavior-macro";
-            label = "ACIRC";
-            #binding-cells = <0>;
-            bindings = <&always_circ &kp A>;
-        };
-
-        ecirc: ecirc {
-            compatible = "zmk,behavior-macro";
-            label = "ECIRC";
-            #binding-cells = <0>;
-            bindings = <&always_circ &kp E>;
-        };
-
-        icirc: icirc {
-            compatible = "zmk,behavior-macro";
-            label = "ICIRC";
-            #binding-cells = <0>;
-            bindings = <&always_circ &kp I>;
-        };
-
-        ocirc: ocirc {
-            compatible = "zmk,behavior-macro";
-            label = "OCIRC";
-            #binding-cells = <0>;
-            bindings = <&always_circ &kp O>;
-        };
-
-        ucirc: ucirc {
-            compatible = "zmk,behavior-macro";
-            label = "UCIRC";
-            #binding-cells = <0>;
-            bindings = <&always_circ &kp U>;
-        };
-
-        atilde: atilde {
-            compatible = "zmk,behavior-macro";
-            label = "ATILDE";
-            #binding-cells = <0>;
-            bindings = <&always_tilde &kp A>;
-        };
-
-        otilde: otilde {
-            compatible = "zmk,behavior-macro";
-            label = "OTILDE";
-            #binding-cells = <0>;
-            bindings = <&always_tilde &kp O>;
-        };
-
-        ao: ao {
-            compatible = "zmk,behavior-macro";
-            label = "AO";
-            #binding-cells = <0>;
-            bindings = <&always_tilde &kp A &kp O>;
-        };
-
-        oes: oes {
-            compatible = "zmk,behavior-macro";
-            label = "OES";
-            #binding-cells = <0>;
-            bindings = <&always_tilde &kp O &kp E &kp S>;
-        };
-
         vim_word: vim_word {
             compatible = "zmk,behavior-macro";
             label = "VIM_WORD";
@@ -550,13 +470,6 @@
             label = "VIM_I";
             #binding-cells = <0>;
             bindings = <&kp LG(LEFT_ARROW) &to 0>;
-        };
-
-        aes: aes {
-            compatible = "zmk,behavior-macro";
-            label = "AES";
-            #binding-cells = <0>;
-            bindings = <&always_tilde &kp A &kp E &kp S>;
         };
 
         esc_0: esc_0 {
@@ -634,50 +547,10 @@
         default_layer {
             label = "DEF";
             bindings = <
-  &q_grave     &kp W           &lt 3 E             &lt 2 R                  &lt 7 T        &lt 10 Y         &lt 3 U                   &lt 2 I              &kp O            &kp P
-  &hm LCTRL A  &hm LEFT_ALT S  &hm LEFT_GUI D      &shift_tap LEFT_SHIFT F  &lt 5 G        &lt 5 H          &shift_tap RIGHT_SHIFT J  &hm LEFT_GUI K       &hm RIGHT_ALT L  &hm_quotes RCTRL 0
-  &kp Z        &kp X           &kp C               &kp V                    &lt 8 B        &lt 4 N          &kp M                     &coma_semi           &dot_colon       &slashandbackslash
-                               &lt 9 LEFT_BRACKET  &hm LEFT_GUI TAB         &lt 6 SPACE    &lt 6 BACKSPACE  &lt 5 ENTER               &lt 7 RIGHT_BRACKET
-            >;
-        };
-
-        graphite {
-            bindings = <
-  &kp B        &kp L       &kp D           &kp W                    &kp Z      &kp SQT  &kp F                     &kp O       &kp U       &kp J
-  &hm LCTRL N  &hm LALT R  &hm LEFT_GUI T  &shift_tap LEFT_SHIFT S  &lt 5 G    &lt 5 Y  &shift_tap RIGHT_SHIFT H  &hm RGUI A  &hm RALT E  &hm RCTRL I
-  &kp Q        &kp X       &kp M           &kp C                    &kp V      &kp K    &kp P                     &coma_semi  &dot_colon  &slashandbackslash
-                           &trans          &trans                   &trans     &trans   &trans                    &trans
-            >;
-        };
-
-        acute {
-            bindings = <
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-                  &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-
-            label = "acute";
-        };
-
-        circ {
-            bindings = <
-  &trans  &trans  &ecirc  &trans  &trans    &trans  &ucirc  &icirc  &ocirc  &trans
-  &acirc  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-                  &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-
-            label = "circ";
-        };
-
-        tilde {
-            bindings = <
-  &trans   &trans  &trans     &trans  &trans    &trans  &trans     &trans  &oes    &trans
-  &atilde  &ao     &aes       &trans  &trans    &trans  &trans     &trans  &trans  &trans
-  &trans   &trans  &kp LA(C)  &trans  &trans    &trans  &kp TILDE  &trans  &trans  &trans
-                   &trans     &trans  &trans    &trans  &trans     &trans
+  &q_grave     &kp W           &kp E               &kp R                    &lt 3 T        &lt 6 Y          &kp U                     &kp I                &kp O            &kp P
+  &hm LCTRL A  &hm LEFT_ALT S  &hm LEFT_GUI D      &shift_tap LEFT_SHIFT F  &lt 1 G        &lt 1 H          &shift_tap RIGHT_SHIFT J  &hm LEFT_GUI K       &hm RIGHT_ALT L  &hm_quotes RCTRL 0
+  &kp Z        &kp X           &kp C               &kp V                    &lt 4 B        &kp N            &kp M                     &coma_semi           &dot_colon       &slashandbackslash
+                               &lt 5 LEFT_BRACKET  &hm LEFT_GUI TAB         &lt 2 SPACE    &lt 2 BACKSPACE  &lt 1 ENTER               &lt 3 RIGHT_BRACKET
             >;
         };
 
@@ -720,7 +593,7 @@
         MEDIA_L {
             bindings = <
   &trans       &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_AUTO  &kp C_BRIGHTNESS_INC  &to 0         &trans  &trans  &trans  &trans  &trans
-  &trans       &kp C_VOL_DN          &kp C_MUTE             &kp C_VOL_UP          &to 1         &trans  &trans  &trans  &trans  &trans
+  &trans       &kp C_VOL_DN          &kp C_MUTE             &kp C_VOL_UP          &trans        &trans  &trans  &trans  &trans  &trans
   &bootloader  &kp C_PREV            &kp C_PLAY_PAUSE       &kp C_NEXT            &trans        &trans  &trans  &trans  &trans  &trans
                                      &bt BT_SEL 0           &bt BT_SEL 1          &bt BT_CLR    &trans  &trans  &trans
             >;
